@@ -1,0 +1,75 @@
+
+{%	extends	"::base.html.twig"	%}	
+
+{%	block	title	%}{{	parent()	}}	-	Index{%	endblock	%}	
+{%	block	body	%}	
+				
+
+		
+			<div class="content">
+					<div id="pad-wrapper" class="user-profile">
+						<div class="row header">
+							<div class="col-md-8">
+								<img src="{{artist_spotify.images[0].url}}" alt="contact" class="avatar img-circle" ></div>
+								
+								
+								<strong><h3 class="name">{{ artist_spotify.name|upper }}</h3></strong></br></br>
+								{% for genre in artist_spotify.genres %}
+									<strong><a class="btn-flat gray ">{{ genre|upper }}</strong></a></br></br>
+								{% else %}
+									<a class=" btn-flat gray">Aucun genre</a>
+								{% endfor %}</br></br>
+					  <a class="btn-flat success" href="{{ artist_spotify.external_urls.spotify }}">Aller sur le site Spotify.fr</a>
+						</div>
+					</div>
+			
+			
+			
+							<div class="row section ui-elements">
+								<div class="col-md-2">
+									<span></span>
+								</div>
+								<div class="col-md-2">
+									<span></span>
+								</div>             
+								<div class="col-md-5 knobs">
+									<div class="knob-wrapper">
+										<input type="text" 
+										value="{{ artist_spotify.popularity|ajouter }}" class="knob" data-thickness=".3" data-inputColor="#333" data-fgColor="#30a1ec" data-bgColor="#d4ecfd" data-width="150" data-readOnly="true">
+										<div class="info">
+											<div class="param">
+												<span class="line blue"></span>
+												 <h3><strong>Popularité</strong><h3></br></br>
+
+                                                <a	href="{{	path('afpaartist_sauvegarde',	{	'id':	artist_spotify.id	})	}}">										
+												 <button type="button" class="btn-glow primary btn-next" data-last="Finish">
+		                                         save <i class="icon-chevron-right"></i>
+		                        				 </button>
+		                        				</a>
+
+											</div>
+										</div>
+									</div>                       
+								</div>
+							</div>
+						</div>
+					
+					
+
+		{%	endblock	%}
+					
+					
+		{%	block	javascripts	%}			
+				<script src="http://code.jquery.com/jquery-latest.js"></script>
+				<script src="{{ asset('bundles/afpaartist/js/bootstrap.min.js') }}"></script>
+				<script src="{{ asset('bundles/afpaartist/js/jquery-ui-1.10.2.custom.min.js') }}"></script>
+				<!-- knob -->
+				<script src="{{ asset('bundles/afpaartist/js/jquery.knob.js') }}"></script>
+				
+					 <script type="text/javascript">
+					$(function () {
+						// jQuery Knobs
+						$(".knob").knob();
+					});
+					</script>
+	    {%	endblock	%}

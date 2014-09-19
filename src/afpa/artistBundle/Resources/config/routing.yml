@@ -1,0 +1,6 @@
+afpaartist_homepage:
+    path:     /artist/{id}
+    defaults: { _controller: afpaartistBundle:Default:index }
+afpaartist_sauvegarde:
+    path:     /artist/save/{id}
+    defaults: { _controller: afpaartistBundle:Default:sauvegarde }

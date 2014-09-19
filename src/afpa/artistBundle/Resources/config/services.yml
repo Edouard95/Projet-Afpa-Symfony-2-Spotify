@@ -1,0 +1,11 @@
+parameters:
+#    afpaartist.example.class: afpa\artistBundle\Example
+
+services:
+#    afpaartist.example:
+#        class: %afpaartist.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    afpa_artist.twig.ajouter_extension:
+        class: afpa\artistBundle\Twig\Extension\ajouterExtension
+        tags:
+            - { name: twig.extension }

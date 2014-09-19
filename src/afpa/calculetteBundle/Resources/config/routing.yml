@@ -1,0 +1,10 @@
+afpacalculette_homepage:
+    path: /
+    defaults: { _controller: afpacalculetteBundle:Calculette:index }
+afpacalculette_calcul:
+    path: /{taf}/{nbre1}/{nbre2}
+    defaults: { _controller: afpacalculetteBundle:Calculette:calcul }
+    requirements:
+        nbre1: \d*
+        nbre2: \d*
+        taf: addition|soustration|multiplication|division
